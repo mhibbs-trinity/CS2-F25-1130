@@ -8,19 +8,26 @@ import javafx.scene.paint.Color;
 public class Particle {
     private Vec2 pos;
     private Vec2 vel;
-    public Particle(Vec2 p) {
+    private Color col;
+    private double size;
+    public Particle(Vec2 p, Vec2 v, Color c, double s) {
         pos = p;
-        vel = Vec2.makeRandom(10);
+        vel = v;
+        col = c;
+        size = s;
+    }
+    public Particle(Vec2 p) {
+        this(p, Vec2.makeRandom(10), Color.DARKTURQUOISE, 20);
     }
     public void display(GraphicsContext g) {
-        g.setFill(Color.GREEN);
-        g.fillOval(pos.x,pos.y, 40,40);
+        g.setFill(col);
+        g.fillOval(pos.x,pos.y, size,size);
     }
     public void update(Canvas canvas) {
-        if(pos.x > canvas.getWidth()-40 || pos.x < 0) {
+        if(pos.x > canvas.getWidth()-size || pos.x < 0) {
             vel.x = -vel.x;
         }
-        if(pos.y > canvas.getHeight()-40 || pos.y < 0) {
+        if(pos.y > canvas.getHeight()-size || pos.y < 0) {
             vel.y = -vel.y;
         }
         pos.x += vel.x;

@@ -30,5 +30,12 @@ public class ParticleSystemApp extends Application {
 
         g = canvas.getGraphicsContext2D();
 
+        AnimationTimer timer = new AnimationTimer() {
+            public void handle(long time) {
+
+            }
+        };
+        timer.start();
+
     }
 }
