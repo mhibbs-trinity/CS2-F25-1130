@@ -8,6 +8,9 @@ public class Vec2 {
     public Vec2(double _x, double _y) {
         x = _x; y = _y;
     }
+    public Vec2 clone() {
+        return new Vec2(this.x, this.y);
+    }
     public static Vec2 makeRandom(double scale) {
         Vec2 result = new Vec2();
         result.x = Math.random()*scale - (scale/2);

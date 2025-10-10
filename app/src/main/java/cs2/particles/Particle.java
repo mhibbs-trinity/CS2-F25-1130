@@ -19,17 +19,21 @@ public class Particle {
     public Particle(Vec2 p) {
         this(p, Vec2.makeRandom(10), Color.DARKTURQUOISE, 20);
     }
+    public void applyForce(Vec2 force) {
+        vel.addThis(force);
+    }
     public void display(GraphicsContext g) {
         g.setFill(col);
         g.fillOval(pos.x,pos.y, size,size);
     }
     public void update(Canvas canvas) {
+        /*
         if(pos.x > canvas.getWidth()-size || pos.x < 0) {
             vel.x = -vel.x;
         }
         if(pos.y > canvas.getHeight()-size || pos.y < 0) {
             vel.y = -vel.y;
-        }
+        }*/
         pos.x += vel.x;
         pos.y += vel.y;
     }
