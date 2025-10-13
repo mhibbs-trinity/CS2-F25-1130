@@ -5,11 +5,11 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Particle {
-    private Vec2 pos;
-    private Vec2 vel;
-    private Color col;
-    private double size;
+public abstract class Particle {
+    protected Vec2 pos;
+    protected Vec2 vel;
+    protected Color col;
+    protected double size;
     public Particle(Vec2 p, Vec2 v, Color c, double s) {
         pos = p;
         vel = v;
@@ -22,10 +22,8 @@ public class Particle {
     public void applyForce(Vec2 force) {
         vel.addThis(force);
     }
-    public void display(GraphicsContext g) {
-        g.setFill(col);
-        g.fillOval(pos.x,pos.y, size,size);
-    }
+    public abstract void display(GraphicsContext g);
+
     public void update(Canvas canvas) {
         /*
         if(pos.x > canvas.getWidth()-size || pos.x < 0) {

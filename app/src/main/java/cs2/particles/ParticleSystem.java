@@ -14,7 +14,11 @@ public class ParticleSystem {
         parts = new ArrayList<>();
     }
     public void addParticle() {
-        parts.add(new Particle(origin.clone()));
+        if(Math.random() < 0.5) {
+            parts.add(new SquareParticle(origin.clone()));
+        } else {
+            parts.add(new RoundParticle(origin.clone()));
+        }
     }
     public void applyForce(Vec2 force) {
         for(Particle p : parts) {
