@@ -48,18 +48,19 @@ public class ParticleSystemApp extends Application {
 
         Image img = new Image("file:star.png");
         
-
         AnimationTimer timer = new AnimationTimer() {
             public void handle(long time) {
                 g.setFill(Color.WHITE);
                 g.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
 
-                g.drawImage(img, 100,100);
+                //g.drawImage(img, 100,100);
 
                 for(ParticleSystem ps : pss) {
+                    //ps.addParticle(img);
                     ps.addParticle();
-                    ps.display(g);
                     ps.update(canvas);
+                    ps.display(g);
+                    
                     ps.applyForce(gravity);
                     ps.applyForce(wind);
                 }

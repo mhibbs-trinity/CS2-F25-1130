@@ -25,13 +25,13 @@ public abstract class Particle {
     public abstract void display(GraphicsContext g);
 
     public void update(Canvas canvas) {
-        /*
+        
         if(pos.x > canvas.getWidth()-size || pos.x < 0) {
             vel.x = -vel.x;
         }
         if(pos.y > canvas.getHeight()-size || pos.y < 0) {
             vel.y = -vel.y;
-        }*/
+        }
         pos.x += vel.x;
         pos.y += vel.y;
     }
