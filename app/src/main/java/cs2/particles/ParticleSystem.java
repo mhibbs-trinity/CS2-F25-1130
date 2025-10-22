@@ -18,13 +18,13 @@ public class ParticleSystem {
         parts.add(new ImageParticle(origin.clone(), img));
     }
     public void addParticle() {
-        parts.add(new RainbowParticle(origin.clone()));
-        /*
+        //parts.add(new RainbowParticle(origin.clone()));
+        
         if(Math.random() < 0.5) {
             parts.add(new SquareParticle(origin.clone()));
         } else {
             parts.add(new RoundParticle(origin.clone()));
-        }*/
+        }
     }
     public void applyForce(Vec2 force) {
         for(Particle p : parts) {

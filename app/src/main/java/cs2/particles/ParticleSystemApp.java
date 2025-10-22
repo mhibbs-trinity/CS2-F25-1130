@@ -48,9 +48,11 @@ public class ParticleSystemApp extends Application {
 
         Image img = new Image("file:star.png");
         
+        ColorPattern cp = new RainbowColor();
+
         AnimationTimer timer = new AnimationTimer() {
             public void handle(long time) {
-                g.setFill(Color.WHITE);
+                g.setFill(cp.getColor());
                 g.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
 
                 //g.drawImage(img, 100,100);
