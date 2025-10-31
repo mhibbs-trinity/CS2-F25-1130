@@ -21,7 +21,7 @@ public class SimpleGenerics {
 
     public static <T extends Comparable<T>> void bubbleSort(T[] a) {
         for(int j=0; j<a.length; j++) {
-            for(int i=0; i<a.length-1; i++) {
+            for(int i=0; i<a.length-1-j; i++) {
                 if(a[i].compareTo(a[i+1]) > 0) {
                     T tmp = a[i];
                     a[i] = a[i+1];
