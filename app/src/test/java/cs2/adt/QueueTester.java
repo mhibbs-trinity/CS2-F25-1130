@@ -15,8 +15,7 @@ public class QueueTester {
 
     @BeforeEach
     public void init() {
-        //TODO 
-        //s = new Queue<>();
+        s = new ArrayQueue<>();
     }
 
     @Test
@@ -33,7 +32,7 @@ public class QueueTester {
     }
 
     @Test
-    public void testLotsOfPushPop() {
+    public void testLotsOf() {
         assertTrue(s.isEmpty());
         for(int i=0; i<100; i++) {
             s.enqueue(i);
@@ -73,10 +72,10 @@ public class QueueTester {
             //SHOULD NEVER GET HERE
             fail("EmptyStackException not thrown");
         } //TODO 
-        catch(EmptyStackException e) {
+        catch(EmptyQueueException e) {
             //Do nothing
         } catch(Exception e) {
-            fail("Wrong exception thrown " + e.getMessage());
+            fail("Wrong exceptionException thrown " + e.getMessage());
         }
     }
 }
