@@ -12,11 +12,11 @@ import org.junit.jupiter.api.Test;
 
 public class StackTester {
 
-    private ArrayStack<Integer> s;
+    private Stack<Integer> s;
 
     @BeforeEach
     public void init() {
-        s = new ArrayStack<>();
+        s = new LinkedStack<>();
     }
 
     @Test

@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.util.EmptyStackException;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +13,7 @@ public class QueueTester {
 
     @BeforeEach
     public void init() {
-        s = new ArrayQueue<>();
+        s = new LinkedQueue<>();
     }
 
     @Test
