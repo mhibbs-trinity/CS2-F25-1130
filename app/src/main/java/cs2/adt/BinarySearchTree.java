@@ -25,7 +25,48 @@ public class BinarySearchTree<T extends Comparable<T>> {
                 left.insert(elem);
             }
         }
+
+        public MaxResult passUpMax() {
+            if(right == null) {
+                return new MaxResult(data,left);
+            } else {
+                MaxResult mr = right.passUpMax();
+                right = mr.kid;
+                return new MaxResult(data, this);
+            }
+        }
+
+        public Node remove(T elem) {
+            if(elem.compareTo(data) == 0) {
+                //Found it!
+                if(left == null) {
+                    return right;
+                } else if (right == null) {
+                    return left;
+                } else {
+                    MaxResult mr = left.passUpMax();
+                    left = mr.kid;
+                    data = mr.data;
+                    return this;
+                }
+            } else {
+                if(elem.compareTo(data) < 0) {
+                    left = left.remove(elem);
+                } else {
+                    right = right.remove(elem);
+                }
+                return this;
+            }
+        }
+
     }
+
+    public class MaxResult {
+        public T data;
+        public Node kid;
+        public MaxResult(T d, Node n) { data = d; kid = n;}
+    }
+
 
     private Node root;
     public BinarySearchTree() {
@@ -33,6 +74,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public boolean isEmpty() { return root == null; }
+    public void remove(T elem) {
+        root = root.remove(elem);
+    }
     public void insert(T elem) {
         if(root == null) root = new Node(elem, null, null);
         root.insert(elem);
