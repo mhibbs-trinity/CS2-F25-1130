@@ -1,6 +1,8 @@
 package cs2.adt;
 
-public class BinarySearchTree<T extends Comparable<T>> {
+import java.util.Iterator;
+
+public class BinarySearchTree<T extends Comparable<T>> implements Iterable<T> {
     private class Node {
         public T data; public Node left; public Node right;
         public Node(T d, Node l, Node r) {
@@ -97,6 +99,49 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return false;
         */
     }
+
+    public void helperPreOrder(Node curr) {
+        System.out.print(curr.data + ",");
+        if(curr.left != null) helperPreOrder(curr.left);
+        if(curr.right != null) helperPreOrder(curr.right);
+    }
+    public void printPreOrder() {
+        if(root != null) helperPreOrder(root);
+    }
+
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            LinkedStack<Node> s = new LinkedStack<>();
+            { if(root != null) s.push(root); }
+            public boolean hasNext() {
+                return !s.isEmpty();
+            }
+            public T next() {
+                Node curr = s.pop();
+                if(curr.right != null) s.push(curr.right);
+                if(curr.left != null) s.push(curr.left);
+                return curr.data;
+            }
+        };
+    }
+
+    public static void main(String[] args) {
+        BinarySearchTree<String> tree = new BinarySearchTree<>();
+        tree.insert("Hello");
+        tree.insert("Goodbye");
+        tree.insert("White");
+
+        Iterator<String> it = tree.iterator();
+        while(it.hasNext()) {
+            System.out.println(it.next());
+        }
+        
+        for(String s : tree) {
+            System.out.println(s);
+        }
+
+    }
+
 
     
 }
